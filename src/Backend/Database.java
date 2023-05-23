@@ -93,4 +93,16 @@ public class Database {
             throwables.printStackTrace();
         }
     }
+    public void updateItemsFinished(Item item) {
+        try {
+            PreparedStatement stmt = conn.prepareStatement("UPDATE items SET finished = ? WHERE id = ?");
+            //stmt.setBoolean(1, item.getFinished());
+            stmt.setBoolean(1, item.getFinished());
+            stmt.setInt(2, item.getId());
+            stmt.executeUpdate();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 }

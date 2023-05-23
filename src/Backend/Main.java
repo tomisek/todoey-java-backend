@@ -46,6 +46,12 @@ public class Main {
             response.send("Item updated");
 
         });
+        app.post("/rest/items/:id", (request, response) -> {
+            Item item = (Item) request.getBody(Item.class);
+            database.updateItemsFinished(item);
+            response.send("Item updated");
+
+        });
 
         try {
             app.use(Middleware.statics(Paths.get("src/Frontend").toString()));//serving static files

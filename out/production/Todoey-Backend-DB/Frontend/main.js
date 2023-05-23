@@ -13,9 +13,14 @@ function renderList() {
     list.empty();
 
     for (everyItem of items) {
-        list.append(`<li class=isChecked${everyItem.finished}> ${everyItem.text}|ID:${everyItem.id }
-        <button class= "updateTheText">Uppdate text</button>  
-        <span class="deleteButton"> X </span> </li>`);
+        list.append
+        
+        (`<li onclick="addMarkedAsDoneFunctionality(${everyItem.finished}, 
+        ${everyItem.id}, this)" class= "isChecked${everyItem.finished}">
+        ${everyItem.text}|ID:${everyItem.id }
+        <span class="deleteButton"> X </span> </li><button class= "updateTheText">Uppdate text</button><br><br>
+        `);
+        
     }
     addDeleteFunctionality();
     addUpdateFunctionality();
@@ -38,8 +43,9 @@ function addItem() {
     }
     $("#myInput").val("");
     renderList();
-    location.reload();
+    getItems();
 }
+
 
 function addDeleteFunctionality() {
     let allDeleteButtons = $(".deleteButton");
@@ -52,7 +58,7 @@ function addDeleteFunctionality() {
             deleteItem(items[i]);
             items.splice(i, 1);
             
-            location.reload();
+            getItems();
         })
     }
 }
@@ -63,29 +69,41 @@ function addUpdateFunctionality() {
     for (let i = 0; i < allItems.length; i++) {
         $(allItems[i]).click(function() {
 
+
             let updateText = prompt("What is your new text");
             
             items[i].text = updateText;
            
-            updateItem(items[i]);
-            location.reload();
+            updateItemsText(items[i]);
+            getItems();
             
-
-
-            /* if (items[i].finished == true) {
-                items[i].finished = false;
-                $(allItems[i]).removeClass("isCheckedtrue").addClass("isCheckedfalse");
-
-
-            } else if (items[i].finished == false) {
-                items[i].finished = true;
-                $(allItems[i]).removeClass("isCheckedfalse").addClass("isCheckedtrue");
-
-            }
-            console.log(items);
-            updateMarkedItem(items[i]); */
         })
     }
+}
+
+function addMarkedAsDoneFunctionality(maria, jack, tomas) {
+
+    console.log(maria);
+    console.log(jack);
+    console.log(tomas);    
+        
+            if (maria == true) {
+                
+                $(tomas).removeClass("isCheckedtrue").addClass("isCheckedfalse");
+                maria = false;  
+
+            } else if (maria == false) {
+                
+                $(tomas).removeClass("isCheckedfalse").addClass("isCheckedtrue");
+                maria = true;
+                
+            }
+            console.log(maria);
+            updateItemsStatus(jack, maria);
+            console.log(jack, maria);
+            
+            getItems();
+
 }
 
 async function addItemToDB(item) {
@@ -109,15 +127,27 @@ async function deleteItem(item) {
     console.log(await result.text())
 }
 
-async function updateItem(item) {
-    let itemToUpdate = {
+async function updateItemsText(item) {
+    let itemToUpdateText = {
         id: item.id,
         text: item.text,
-        finished: item.finished
     }
 
     let result = await fetch("/rest/items/id", {
         method: "PUT",
+        body: JSON.stringify(itemToUpdateText)
+    });
+    console.log(await result.text())
+}
+
+async function updateItemsStatus(jack, maria) {
+    let itemToUpdate = {
+        id: jack,
+        finished: maria
+    }
+
+    let result = await fetch("/rest/items/id", {
+        method: "POST",
         body: JSON.stringify(itemToUpdate)
     });
     console.log(await result.text())
