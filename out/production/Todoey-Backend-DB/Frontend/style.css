@@ -1,99 +1,99 @@
-
 body {
-    margin: 10px;
-  }
-  
-  * {
-    box-sizing: border-box;
-  }
-  
-  ul {
-    margin: 0;
-    padding: 0;
-  }
-  
-  
-  li {
-    cursor: crosshair;
-    position: relative;
-    padding: 12px 8px 12px 40px;
-    background: #eee;
-    font-size: 18px;
-    transition: 0.2s;
-  
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  
-  li:hover {
-    background-color: lightgrey;
-    color: lightcoral;
-  }
-  
-  .isCheckedtrue {
-    text-decoration: line-through;
-    background-color: rgb(173, 230, 185);
-  }
-  
-  .isCheckedtrue::before {
-    content: "\2713";
-    position: absolute;
-    font-size: 15px;
-    left: 15px;
-    font-weight: bolder;
-    color: blue;
-  }
-  
-  .deleteButton {
-    position: absolute;
-    color: white;
-    right: 0;
-    top: 0;
-    padding: 22px 22px 22px 22px;
-  }
-  
-  .deleteButton:hover {
-    background-image: url(/images/cross.png);
-  }
-  
-  .header {
-    background-color: rgb(255, 0, 60);
-    padding: 30px 40px;
-    color: white;
-    text-align: center;
-  }
-  
-  .header:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  
-  input {
-    margin: 0;
-    border: none;
-    border-radius: 0;
-    width: 75%;
-    padding: 10px;
-    float: left;
-    font-size: 16px;
-  }
-  
-  .addBtn {
-    padding: 10px;
-    width: 25%;
-    background: rgb(13, 98, 23);
-    color: white;
-    float: left;
-    text-align: center;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-    border-radius: 0;
-  }
-  
-  .addBtn:hover {
-    background-color:rgb(26, 27, 26);
-  }
+  margin: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  cursor: grab;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+li:hover {
+  background-color: lightgrey;
+  color: lightcoral;
+}
+
+.isCheckedtrue {
+  text-decoration: line-through;
+  background-color: rgb(173, 230, 185);
+}
+
+.isCheckedtrue::before {
+  content: "\2713";
+  position: absolute;
+  font-size: 15px;
+  left: 15px;
+  font-weight: bolder;
+  color: blue;
+}
+
+.deleteButton {
+  position: absolute;
+  color: rgb(41, 122, 16);
+  right: 0;
+  top: 0;
+  padding: 22px 22px 22px 22px;
+  background-image: url(/images/cross.png);
+  opacity: 0.1;
+}
+
+.deleteButton:hover {
+  opacity: 0.5;
+}
+
+.header {
+  background-color: rgb(255, 0, 60);
+  padding: 30px 40px;
+  color: white;
+  text-align: center;
+}
+
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+input {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  width: 75%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+}
+
+.addBtn {
+  padding: 10px;
+  width: 25%;
+  background: rgb(13, 98, 23);
+  color: white;
+  float: left;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 0;
+}
+
+.addBtn:hover {
+  background-color: rgb(26, 27, 26);
+}
