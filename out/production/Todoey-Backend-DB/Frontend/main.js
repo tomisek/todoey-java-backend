@@ -16,7 +16,7 @@ function renderList() {
     list.append(`<li onclick="addMarkedAsDoneFunctionality(${everyItem.finished}, 
         ${everyItem.id}, this)" class= "isChecked${everyItem.finished}">
         ${everyItem.text}|ID:${everyItem.id}
-        <span class="deleteButton"> X </span> <button class= "updateTheText">Uppdate text</button></li><br>
+        <span class="deleteButton"> X </li></span> <button class= "updateTheText">Uppdate text</button><br><br>
         `);
   }
   addDeleteFunctionality();
